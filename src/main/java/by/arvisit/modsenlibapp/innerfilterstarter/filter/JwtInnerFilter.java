@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class JwtFilter extends OncePerRequestFilter {
+public class JwtInnerFilter extends OncePerRequestFilter {
 
     private final UserClient userClient;
     private final AuthenticationEntryPoint authenticationEntryPoint;
@@ -53,9 +53,11 @@ public class JwtFilter extends OncePerRequestFilter {
 
         UserDetails userDetails = new User(userDto.username(), "",
                 userDto.authorities().stream().map(SimpleGrantedAuthority::new).toList());
+        
+        String tokenCredentials = header.split(" ")[1].trim();
 
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                userDetails, null,
+                userDetails, tokenCredentials,
                 userDetails.getAuthorities());
 
         authentication.setDetails(
