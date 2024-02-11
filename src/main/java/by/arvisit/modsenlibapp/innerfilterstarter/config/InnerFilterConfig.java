@@ -8,13 +8,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
+import by.arvisit.modsenlibapp.innerfilterstarter.client.InnerCommunicationFeignConfiguration;
 import by.arvisit.modsenlibapp.innerfilterstarter.client.UserClient;
 import by.arvisit.modsenlibapp.innerfilterstarter.client.UserClientFeignConfiguration;
-import by.arvisit.modsenlibapp.innerfilterstarter.filter.JwtFilter;
+import by.arvisit.modsenlibapp.innerfilterstarter.filter.JwtInnerFilter;
 
 @Configuration
 @ConditionalOnProperty(prefix = "security.inner-filter", name = "include", havingValue = "true")
-@Import(UserClientFeignConfiguration.class)
+@Import({ UserClientFeignConfiguration.class, InnerCommunicationFeignConfiguration.class })
 public class InnerFilterConfig {
 
     @Autowired
@@ -24,8 +25,8 @@ public class InnerFilterConfig {
 
     @Bean
     @ConditionalOnMissingBean
-    JwtFilter jwtFilter() {
-        return new JwtFilter(userClient, authenticationEntryPoint);
+    JwtInnerFilter jwtInnerFilter() {
+        return new JwtInnerFilter(userClient, authenticationEntryPoint);
     }
 
 }
