@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>by.arvisit.modsen-lib-app</groupId>
+  <artifactId>inner-filter-starter</artifactId>
+  <versioning>
+    <lastUpdated>20240213154506</lastUpdated>
+    <snapshot>
+      <timestamp>20240213.154506</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>0.0.1-20240213.154506-1</value>
+        <updated>20240213154506</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>0.0.1-20240213.154506-1</value>
+        <updated>20240213154506</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+  <version>0.0.1-SNAPSHOT</version>
+</metadata>
